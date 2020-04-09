@@ -1,0 +1,11 @@
+@import url(__photo/element__photo.css);
+@import url(__description/element__description.css);
+@import url(element__photo-name/element__photo-name.css);
+@import url(element__like/element__like.css);
+
+.element {
+    max-width: 282px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+}

@@ -1,0 +1,6 @@
+.element__description {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: calc(361px - 282px);
+}
