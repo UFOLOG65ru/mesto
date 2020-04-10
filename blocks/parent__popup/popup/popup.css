@@ -1,0 +1,19 @@
+@import url(__title/popup__title.css);
+@import url(__name/popup__name.css);
+@import url(__job/popup__job.css);
+@import url(__save/popup__save.css);
+@import url(/blocks/line/line.css);
+@import url(/blocks/line/_popup/line_popup.css);
+@import url(__close/popup__close.css);
+
+.popup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+    height: 330px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+}

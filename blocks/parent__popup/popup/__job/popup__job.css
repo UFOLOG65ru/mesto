@@ -1,0 +1,8 @@
+.popup__job {
+    width: 358px;
+    height: 27.26px;
+    margin-left: 36px;
+    margin-top: 30px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
