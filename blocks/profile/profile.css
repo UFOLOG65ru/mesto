@@ -2,6 +2,7 @@
 @import url(__info/profile__info.css);
 @import url(info__name/info__name.css);
 @import url(info__job/info__job.css);
+@import url(__title/profile__title.css);
 @import url(__button/profile__button.css);
 @import url(__button/_add/profile__button_add.css);
 @import url(__button/_edit/profile__button_edit.css);
@@ -14,4 +15,10 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 40px;
+}
+
+@media(max-width: 750px) {
+    .profile {
+        flex-direction: column;
+    }
 }

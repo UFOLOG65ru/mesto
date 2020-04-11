@@ -5,10 +5,17 @@
     background: url(../../../../images/button_edit.svg) no-repeat center;
     border: 1px solid #FFFFFF;
     margin-left: 17px;
-    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .profile__button_edit:hover {
     opacity: 0.6;
     cursor: pointer;
+}
+
+@media(max-width: 500px){
+    .profile__button_edit {
+        width: 18px;
+        height: 18px;
+    }
 }

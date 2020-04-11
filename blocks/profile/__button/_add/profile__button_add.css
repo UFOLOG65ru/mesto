@@ -12,3 +12,10 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+@media(max-width:750px){
+    .profile__button_add{
+        width: 100%;
+        margin-top: 36px;
+    }
+}

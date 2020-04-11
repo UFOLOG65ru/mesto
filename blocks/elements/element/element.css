@@ -4,8 +4,7 @@
 @import url(element__like/element__like.css);
 
 .element {
-    max-width: 282px;
     width: 100%;
     background: #FFFFFF;
-    border-radius: 10px;
+    border-radius: 20px;
 }
