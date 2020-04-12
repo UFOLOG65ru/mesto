@@ -1,0 +1,16 @@
+.element__like {
+    width: 21px;
+    height: 19px;
+    border: none;
+    background: url(../../../../images/like.svg) center;
+}
+
+.element__like:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.6s;
+}
+
+.element__like:focus { 
+    outline: none; 
+}

@@ -1,0 +1,14 @@
+.profile__job {
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+
+@media(max-width: 500px){
+    .profile__job {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

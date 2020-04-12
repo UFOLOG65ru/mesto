@@ -1,10 +1,10 @@
 @import url(__photo/element__photo.css);
 @import url(__description/element__description.css);
-@import url(element__photo-name/element__photo-name.css);
-@import url(element__like/element__like.css);
+@import url(__photo-name/element__photo-name.css);
+@import url(__like/element__like.css);
 
 .element {
     width: 100%;
     background: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 10px;
 }

@@ -1,0 +1,15 @@
+@import url(_name/popup__input_name.css);
+@import url(_job/popup__input_job.css);
+
+.popup__input {
+    max-width: 358px;
+    width: 90%;
+    height: 27.26px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.popup__input:focus {
+    outline: none;
+}
