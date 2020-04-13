@@ -2,7 +2,7 @@
     width: 21px;
     height: 19px;
     border: none;
-    background: url(../../../../images/like.svg) center;
+    background: url(../../../images/like.svg) center;
 }
 
 .element__like:hover {

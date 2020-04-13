@@ -1,4 +1,4 @@
-const buttonEdit = document.querySelector('.profile__button_edit');
+const buttonEdit = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
 const buttonClose = document.querySelector('.popup__close');
 let nameValue = document.querySelector('.profile__name');
@@ -25,7 +25,7 @@ function formSubmitHandler (evt) {
 
     nameValue.textContent = popupName.value;
     jobValue.textContent = popupJob.value;
-    popup.classList.remove('popup_opened');
+    close();
 }
 
 //слушатель открытия попап

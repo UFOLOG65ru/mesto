@@ -1,6 +1,3 @@
-@import url(element/element.css);
-
-
 .elements {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
