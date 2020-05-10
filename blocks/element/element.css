@@ -8,6 +8,8 @@
 .element {
     position: relative;
     width: 100%;
+    max-width: 282px;
+    height: 361px;
     background: #FFFFFF;
     border-radius: 10px;
 }

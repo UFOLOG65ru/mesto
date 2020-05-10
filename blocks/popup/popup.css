@@ -10,6 +10,14 @@
 @import url(_opened/popup_opened.css);
 @import url(_edit/popup_edit.css);
 @import url(_add/popup_add.css);
+@import url(_image/popup_image.css);
+@import url(__full-image/popup__full-image.css);
+@import url(__close/_full-image/popup__close_full-image.css);
+@import url(__close/_add-window/popup__close_add-window.css);
+@import url(__close/_edit-window/popup__close_edit-window.css);
+@import url(__full-window/popup__full-window.css);
+@import url(__figcaption/popup__figcaption.css);
+
 
 .popup {
     position: fixed;
@@ -21,4 +29,11 @@
     z-index: 100;
     top: 0;
     left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .7s linear;
+    -moz-transition: all .7s ease; 
+    -webkit-transition: all .7s ease; 
+    -o-transition: all .7s ease; 
+    -ms-transition: all .7s ease; 
 }

@@ -2,6 +2,8 @@
     width: 21px;
     height: 19px;
     border: none;
+    
+    margin-right: 8px;
     background: url(../../../images/like.svg) center;
 }
 

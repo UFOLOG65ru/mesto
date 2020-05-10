@@ -29,10 +29,10 @@
         <section class="elements">
                 <template id='image'>
                     <div class="element">
-                    <img src="./images/карачаевск-min.jpg"  alt="Карачаевск" class="element__photo">
+                    <img src=""  alt="" class="element__photo">
                     <button class="element__trash" type="button"  aria-label="Удалить"></button>
                     <div class="element__description">
-                         <h3 class="element__photo-name">Карачаево-Ч...</h3>
+                         <h3 class="element__photo-name"></h3>
                     <button class="element__like element__like_disactive" type="button" aria-label="Like"></button>
                     </div>
                 </div>
@@ -65,6 +65,14 @@
                 <button class="popup__submit popup__submit_create" type="submit" method="POST" action="#">Создать</button>
                 <button class="popup__close popup__close_add-window" type="reset" aria-label="Close"></button>
             </form>
+        </div>
+        <div class="popup popup_image">
+            <figure class="popup__full-image">
+                <button class="popup__close popup__close_full-image" type="reset" aria-label="Close"></button>
+                <img src="" 
+                alt="" class="popup__full-window">
+                <figcaption class="popup__figcaption"></figcaption>
+              </figure>
         </div>
     </div>
     <script src="script/script.js"></script>
