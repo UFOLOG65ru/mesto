@@ -27,62 +27,43 @@
             </section>
 
         <section class="elements">
-                <div class="element">
+                <template id='image'>
+                    <div class="element">
                     <img src="./images/карачаевск-min.jpg"  alt="Карачаевск" class="element__photo">
-                    <div class="element__description">
-                         <h3 class="element__photo-name">Карачаевск</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/эльбрус-min.jpg"  alt="Гора Эльбрус" class="element__photo">
-                    <div class="element__description">
-                         <h3 class="element__photo-name">Гора Эльбрус</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/домбай-min.jpg"  alt="Домбай" class="element__photo">
-                    <div class="element__description">
-                         <h3 class="element__photo-name">Домбай</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/эльбрус-min.jpg"  alt="Гора Эльбрус" class="element__photo">
-                    <div class="element__description">
-                         <h3 class="element__photo-name">Гора Эльбрус</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/домбай-min.jpg"  alt="Домбай" class="element__photo">
-                    <div class="element__description">
-                         <h3 class="element__photo-name">Домбай</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/карачаевск-min.jpg"  alt="Карачаевск" class="element__photo">
+                    <button class="element__trash" type="button"  aria-label="Удалить"></button>
                     <div class="element__description">
                          <h3 class="element__photo-name">Карачаево-Ч...</h3>
-                    <button class="element__like" type="button" aria-label="Like"></button>
+                    <button class="element__like element__like_disactive" type="button" aria-label="Like"></button>
                     </div>
                 </div>
+                </template>
         </section>
 
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
         <!-- элемент popup -->
-        <div class="popup">
+        <div class="popup popup_edit">
             <!-- окно popup -->
-            <form class="popup__container" name="popup__container" method="POST" action="#"> 
+            <form class="popup__container popup__container_edit" name="popup__edit" method="POST" action="#"> 
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input popup__input_name" name="input_name" type="text" required  placeholder="Введите имя">
-                <input class="popup__input popup__input_job" name="input_job" type="text" required  placeholder="Введите род деятельности">
-                <button class="popup__save" type="submit">Сохранить</button>
-                <button class="popup__close" type="reset" aria-label="Close"></button>
+                <input class="popup__input popup__input_name" 
+                name="input_name" type="text" required  placeholder="Введите имя">
+                <input class="popup__input popup__input_job" 
+                name="input_job" type="text" required  placeholder="Введите род деятельности">
+                <button class="popup__submit popup__submit_save" type="submit">Сохранить</button>
+                <button class="popup__close popup__close_edit-window" type="reset" aria-label="Close"></button>
+            </form>
+        </div>
+        <div class="popup popup_add">
+            <form class="popup__container popup__container_add" name="popup__add" method="POST" action="#"> 
+                <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input popup__input_title" 
+                name="input_title" type="text" required  placeholder="Название">
+                <input class="popup__input popup__input_url" 
+                name="input_url" type="text" required  placeholder="Ссылка на картинку">
+                <button class="popup__submit popup__submit_create" type="submit" method="POST" action="#">Создать</button>
+                <button class="popup__close popup__close_add-window" type="reset" aria-label="Close"></button>
             </form>
         </div>
     </div>

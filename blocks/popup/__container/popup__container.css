@@ -1,3 +1,6 @@
+@import url(_add/popup__container_add.css);
+@import url(_edit/popup__container_edit.css);
+
 .popup__container {
     position: relative;
     display: flex;

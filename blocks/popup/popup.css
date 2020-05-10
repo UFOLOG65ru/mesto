@@ -3,9 +3,13 @@
 @import url(__input/popup__input.css);
 @import url(__input/_name/popup__input_name.css);
 @import url(__input/_job/popup__input_job.css);
-@import url(__save/popup__save.css);
+@import url(__input/_title/popup__input_title.css);
+@import url(__input/_url//popup__input_url.css);
+@import url(__submit/popup__submit.css);
 @import url(__close/popup__close.css);
 @import url(_opened/popup_opened.css);
+@import url(_edit/popup_edit.css);
+@import url(_add/popup_add.css);
 
 .popup {
     position: fixed;

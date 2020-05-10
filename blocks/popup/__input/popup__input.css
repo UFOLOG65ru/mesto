@@ -1,5 +1,7 @@
 @import url(_name/popup__input_name.css);
 @import url(_job/popup__input_job.css);
+@import url(_title/popup__input_title.css);
+@import url(_url/popup__input_url.css);
 
 .popup__input {
     max-width: 358px;

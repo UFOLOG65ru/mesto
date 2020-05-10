@@ -1,3 +1,6 @@
+@import url(_add-window/popup__close_add-window.css);
+@import url(_edit-window/popup__close_edit-window.css);
+
 .popup__close {
     position: absolute;
     background: url(../../../images/CloseIcon.svg) center; 

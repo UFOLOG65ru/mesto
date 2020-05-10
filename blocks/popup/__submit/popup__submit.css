@@ -1,4 +1,4 @@
-.popup__save {
+.popup__submit {
     max-width: 358px;
     width: 90%;
     margin: 0 auto;
@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.popup__save:hover {
+.popup__submit:hover {
     background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
     transition: 0.6s;
