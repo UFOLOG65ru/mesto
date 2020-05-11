@@ -1,4 +1,4 @@
-.elements {
+.places-list {
     display: grid;
     grid-template-columns: repeat(3, 282px);
     grid-row-gap: 21px;
@@ -11,13 +11,13 @@
 }
 
 @media(max-width: 1000px){
-    .elements {
+    .places-list {
         grid-template-columns: repeat(2, 282px);
     }
 }
 
 @media(max-width: 665px){
-    .elements {
+    .places-list {
         grid-template-columns: 282px;
     }
 }

@@ -1,0 +1,15 @@
+@import url(__photo/place__photo.css);
+@import url(__description/place__description.css);
+@import url(__photo-name/place__photo-name.css);
+@import url(__trash/place__trash.css);
+@import url(__like/place__like.css);
+@import url(__like/_active/place__like_active.css);
+
+.place {
+    position: relative;
+    width: 100%;
+    max-width: 282px;
+    height: 361px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
