@@ -3,5 +3,6 @@
     font-style: normal;
     margin: 0 auto;
     background-color: black;
+    min-height: 100vh;
     
 }

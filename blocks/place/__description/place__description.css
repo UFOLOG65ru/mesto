@@ -1,4 +1,4 @@
-.element__description {
+.place__description {
     display: flex;
     align-items: center;
     height: calc(361px - 282px);
