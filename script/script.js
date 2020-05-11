@@ -61,6 +61,9 @@ function openFullImg(evt){
 //функция удаления карточки
 function deleteCard(evt){
     const currentСard = evt.target.closest('.place');
+    currentСard.querySelector('.place__like').addEventListener('click', actionLike);
+    currentСard.querySelector('.place__trash').addEventListener('click', deleteCard);
+    currentСard.querySelector('.place__photo').addEventListener('click', openFullImg);
     currentСard.remove();
 }
 //функция создания карточки
@@ -78,7 +81,7 @@ function createCard(item) {
 //удалить карточку
     cloneCard.querySelector('.place__trash').addEventListener('click', deleteCard);
 //открыть Full изоражение
-    cloneCard.querySelector('.place__photo').addEventListener('click', openFullImg);
+    cardImage.addEventListener('click', openFullImg);
     return cloneCard;
 };
 
