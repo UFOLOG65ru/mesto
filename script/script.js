@@ -56,7 +56,7 @@ function openFullImg(evt){
     imgSrc.src = evt.target.src;
     imgSrc.alt = evt.target.alt;
     popupFigcaption.textContent = evt.target.alt;
-    popupImg.classList.add('popup_opened');
+    popupToggle(popupImg);
 }
 //функция удаления карточки
 function deleteCard(evt){

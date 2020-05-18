@@ -6,6 +6,7 @@
 @import url(__input/_title/popup__input_title.css);
 @import url(__input/_url//popup__input_url.css);
 @import url(__submit/popup__submit.css);
+@import url(__submit/_inactive/popup__submit_inactive.css);
 @import url(__close/popup__close.css);
 @import url(_opened/popup_opened.css);
 @import url(_edit/popup_edit.css);
@@ -17,7 +18,10 @@
 @import url(__close/_edit-window/popup__close_edit-window.css);
 @import url(__full-window/popup__full-window.css);
 @import url(__figcaption/popup__figcaption.css);
-
+@import url(__input/_error/popup__input_error.css);
+@import url(__input-error/popup__input-error.css);
+@import url(__input-error/_active/popup__input-error_active.css);
+@import url(__container-field/popup__container-field.css);
 
 .popup {
     position: fixed;
