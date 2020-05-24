@@ -7,6 +7,8 @@
 @import url(__input/_url//popup__input_url.css);
 @import url(__submit/popup__submit.css);
 @import url(__submit/_inactive/popup__submit_inactive.css);
+@import url(__submit/_edit/popup__submit_edit.css);
+@import url(__submit/_add/popup__submit_add.css);
 @import url(__close/popup__close.css);
 @import url(_opened/popup_opened.css);
 @import url(_edit/popup_edit.css);
@@ -40,4 +42,8 @@
     -webkit-transition: visibility 0.7s, opacity 0.7s ease; 
     -o-transition: visibility 0.7s, opacity 0.7s ease; 
     -ms-transition: visibility 0.7s, opacity 0.7s ease; 
+}
+
+.popup:hover{
+    cursor: pointer;
 }

@@ -1,6 +1,9 @@
 const placesList = document.querySelector('.places-list');// контейнер для размещения карточек 
 const buttonEdit = document.querySelector('.profile__edit'); //кнопка редактирования профиля
+const popup = document.querySelector('.popup');// оверей попапа
 const buttonAdd = document.querySelector('.profile__add'); //кнопка добавления карточки
+const submitAdd = document.querySelector('.popup__submit_add');// кнопка отправки формы карточки
+const submitEdit = document.querySelector('.popup__submit_edit');// кнопка отправки формы профиля
 const popupEdit = document.querySelector('.popup_edit'); //попап редакттирования профиля
 const popupAdd =document.querySelector('.popup_add'); //поппап добавления карточки
 const popupImg = document.querySelector('.popup_image'); //попап отображения полного изображения
@@ -18,6 +21,8 @@ const save = document.querySelector('.popup__container_edit'); // отправк
 const create =document.querySelector('.popup__container_add'); // отправка формы добавления
 const popupFigcaption = document.querySelector('.popup__figcaption'); //подпись полного изображения
 const imageTemplate = document.querySelector('#image').content; //шаблон карточки
+const inputsEditForm  = Array.from(save.querySelectorAll('.popup__input'));
+const inputAddForm = Array.from(create.querySelectorAll('.popup__input'));
 //исходный массив
 const initialCards = [
     {
@@ -96,9 +101,47 @@ function addCards(cards) {
 
   //переключение класса скрытия/открытия попап
   function popupToggle(popItem) {
+      if((popItem.classList.contains('popup__container_edit')) && (!popItem.classList.contains('popup_opened'))){
+        openPopupEdit();
+        checkInputOpenedForm(inputsEditForm, save);
+        toggleButtonState(inputsEditForm, buttonElement, obj);
+      }
+      if((popItem.classList.contains('popup__container_add')) && (!popItem.classList.contains('popup_opened'))){
+        checkInputOpenedForm(inputsAddForm, create);
+        toggleButtonState(inputAddForm, buttonElement, obj);
+      }
+      // установка/снятие слушателей закрытия клавишей и кликом при открытии/ закрытии формы
+      toggleEvent(popItem);
     // переключаем классы
     popItem.classList.toggle('popup_opened');
   }
+
+//функция находит какая именно форма сейчас открыта
+function openedForm(evt){
+    const openedFormElement = document.querySelector('.popup_opened');
+    closeEsc(evt, openedFormElement);
+
+}
+  //функция закрытия попап через ESC
+  function closeEsc (evt, formElement){
+    if ((evt.target.classList.contains('popup')) || (evt.key === 'Escape')) {
+        popupToggle(formElement);
+      }
+}
+
+function toggleEvent (popupElement){
+    if(!popupElement.classList.contains('popup_opened')){
+        //ставим слушатели закрытия кликом или клавишей
+         document.addEventListener('click', openedForm);
+         document.addEventListener('keydown', openedForm)
+    }
+    else{
+        //снмаем слушатели
+        document.removeEventListener('click', openedForm);
+         document.removeEventListener('keydown', openedForm)
+    }
+   
+}
 
   function openPopupEdit(){
     popupName.value = nameValue.textContent;
@@ -118,6 +161,7 @@ function formSubmitEditHandler (evt) {
     nameValue.textContent = popupName.value;
     jobValue.textContent = popupJob.value;
     popupToggle(popupEdit);
+    toggleButtonState(inputsEditForm, submitEdit, obj);
 }
 //отправка формы Add
 function formSubmitAddHandler (evt){
@@ -125,6 +169,7 @@ function formSubmitAddHandler (evt){
     const newCard = createCard({name: titleValue.value, link: urlValue.value});
     publicCards([newCard]); // добавляем карточку в разметку
     popupToggle(popupAdd);
+    toggleButtonState(inputsAddForm, submitAdd, obj);
 }
 
 //слушатель открытия попап Edit
