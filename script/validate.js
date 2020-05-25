@@ -25,13 +25,6 @@ const hideInputError = (formElement, formInput, obj) => {
   formError.textContent = '';
 };
 
-//функция отображения ошибок при открытии формы
-function checkInputOpenedForm(inputList, formElement){
-    inputList.forEach((formInput) => {
-        hideInputError(formElement, formInput, obj);
-    });
-};
-
 // Функция, которая проверяет валидность поля
 const checkInputValidity = (formElement, formInput, obj) => {
   if (!formInput.validity.valid) {

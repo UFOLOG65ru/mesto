@@ -99,6 +99,13 @@ function addCards(cards) {
     placesList.prepend(...cards);
   }
 
+  //функция отображения ошибок при открытии формы
+function checkInputOpenedForm(inputList, formElement){
+    inputList.forEach((formInput) => {
+        hideInputError(formElement, formInput, obj);
+    });
+};
+
   //переключение класса скрытия/открытия попап
   function popupToggle(popItem) {
       if((popItem.classList.contains('popup__container_edit')) && (!popItem.classList.contains('popup_opened'))){
