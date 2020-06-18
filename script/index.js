@@ -1,10 +1,11 @@
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
 
 const placesList = document.querySelector('.places-list');// контейнер для размещения карточек 
 const buttonEdit = document.querySelector('.profile__edit'); //кнопка редактирования профиля
 const buttonAdd = document.querySelector('.profile__add'); //кнопка добавления карточки
-const submitAdd = document.querySelector('.popup__submit_add');// кнопка отправки формы карточки
-const submitEdit = document.querySelector('.popup__submit_edit');// кнопка отправки формы профиля
+
 const popupEdit = document.querySelector('.popup_edit'); //попап редакттирования профиля
 const popupAdd =document.querySelector('.popup_add'); //поппап добавления карточки
 export const popupImg = document.querySelector('.popup_image'); //попап отображения полного изображения
@@ -21,8 +22,7 @@ const popupJob = document.querySelector('.popup__input_job'); //значение
 const save = document.querySelector('.popup__container_edit'); // отправка формы редактирования
 const create =document.querySelector('.popup__container_add'); // отправка формы добавления
 export const popupFigcaption = document.querySelector('.popup__figcaption'); //подпись полного изображения
-const inputsEditForm  = Array.from(save.querySelectorAll('.popup__input'));
-const inputAddForm = Array.from(create.querySelectorAll('.popup__input'));
+
 //исходный массив
 const initialCards = [
     {
@@ -50,18 +50,29 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+export const settingsObject = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_inactive',
+    inputErrorClass: 'popup__input_error',
+    errorClass: 'popup__input-error'
+    };
+    
+    // Для каждой проверяемой формы создаем экземпляр класса
+// и вызываем метод enableValidation
+const formEditValid = new FormValidator(settingsObject, save);
+formEditValid.enableValidation();
+const formAddValid = new FormValidator(settingsObject, create);
+formAddValid.enableValidation();
 
     
   //переключение класса скрытия/открытия попап
  export function popupToggle(popItem) {
       if((popItem.classList.contains('popup__container_edit')) && (!popItem.classList.contains('popup_opened'))){
         openPopupEdit();
-        checkInputOpenedForm(inputsEditForm, save);
-        toggleButtonState(inputsEditForm, buttonElement, obj);
       }
       if((popItem.classList.contains('popup__container_add')) && (!popItem.classList.contains('popup_opened'))){
-        checkInputOpenedForm(inputsAddForm, create);
-        toggleButtonState(inputAddForm, buttonElement, obj);
       }
       // установка/снятие слушателей закрытия клавишей и кликом при открытии/ закрытии формы
       toggleEvent(popItem);
@@ -114,8 +125,8 @@ function formSubmitEditHandler (evt) {
     nameValue.textContent = popupName.value;
     jobValue.textContent = popupJob.value;
     popupToggle(popupEdit);
-    toggleButtonState(inputsEditForm, submitEdit, obj);
 }
+
 //отправка формы Add
 function formSubmitAddHandler (evt){
     evt.preventDefault(); 
@@ -124,7 +135,6 @@ function formSubmitAddHandler (evt){
     // добавляем карточку в разметку
     placesList.prepend(userCard);
     popupToggle(popupAdd);
-    toggleButtonState(inputsAddForm, submitAdd, obj);
 }
 
 //слушатель открытия попап Edit
