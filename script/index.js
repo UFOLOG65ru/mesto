@@ -1,16 +1,17 @@
+import { Card } from './Card.js';
+
 const placesList = document.querySelector('.places-list');// контейнер для размещения карточек 
 const buttonEdit = document.querySelector('.profile__edit'); //кнопка редактирования профиля
-const popup = document.querySelector('.popup');// оверей попапа
 const buttonAdd = document.querySelector('.profile__add'); //кнопка добавления карточки
 const submitAdd = document.querySelector('.popup__submit_add');// кнопка отправки формы карточки
 const submitEdit = document.querySelector('.popup__submit_edit');// кнопка отправки формы профиля
 const popupEdit = document.querySelector('.popup_edit'); //попап редакттирования профиля
 const popupAdd =document.querySelector('.popup_add'); //поппап добавления карточки
-const popupImg = document.querySelector('.popup_image'); //попап отображения полного изображения
+export const popupImg = document.querySelector('.popup_image'); //попап отображения полного изображения
 const buttonCloseEdit = document.querySelector('.popup__close_edit-window');//кнопка закрытия попапа редакирования
 const buttonCloseAdd = document.querySelector('.popup__close_add-window');//кнопка закрытия попапа добавления
 const buttonCloseImage = document.querySelector('.popup__close_full-image');//кнопка закрытия попапа полноо изображения
-const imgSrc = document.querySelector('.popup__full-window');// изображение , открытое на полную страниицу
+export const imgSrc = document.querySelector('.popup__full-window');// изображение , открытое на полную страниицу
 const nameValue = document.querySelector('.profile__name'); // отображение имени в профиле
 const jobValue = document.querySelector('.profile__job'); //отображение профессии в профиле
 const titleValue = document.querySelector('.popup__input_title'); //значение поля Название
@@ -19,8 +20,7 @@ const popupName =document.querySelector('.popup__input_name'); //значени�
 const popupJob = document.querySelector('.popup__input_job'); //значение поля Введите род деятельности
 const save = document.querySelector('.popup__container_edit'); // отправка формы редактирования
 const create =document.querySelector('.popup__container_add'); // отправка формы добавления
-const popupFigcaption = document.querySelector('.popup__figcaption'); //подпись полного изображения
-const imageTemplate = document.querySelector('#image').content; //шаблон карточки
+export const popupFigcaption = document.querySelector('.popup__figcaption'); //подпись полного изображения
 const inputsEditForm  = Array.from(save.querySelectorAll('.popup__input'));
 const inputAddForm = Array.from(create.querySelectorAll('.popup__input'));
 //исходный массив
@@ -51,63 +51,9 @@ const initialCards = [
     }
 ];
 
-//создаем функционал карточек
-//функция лайка
-function actionLike(evt){
-    evt.target.classList.toggle('place__like_active');
-}
-//открыть попап с полным изображением
-function openFullImg(evt){
-    imgSrc.src = evt.target.src;
-    imgSrc.alt = evt.target.alt;
-    popupFigcaption.textContent = evt.target.alt;
-    popupToggle(popupImg);
-}
-//функция удаления карточки
-function deleteCard(evt){
-    const currentСard = evt.target.closest('.place');
-    currentСard.querySelector('.place__like').addEventListener('click', actionLike);
-    currentСard.querySelector('.place__trash').addEventListener('click', deleteCard);
-    currentСard.querySelector('.place__photo').addEventListener('click', openFullImg);
-    currentСard.remove();
-}
-//функция создания карточки
-function createCard(item) {
     
-// клонируем содержимое тега template
-    const cloneCard = imageTemplate.cloneNode(true);
-    const  cardImage = cloneCard.querySelector('.place__photo');
-// наполняем содержимым
-    cardImage.src = item.link;
-    cardImage.alt = item.name;
-    cloneCard.querySelector('.place__photo-name').textContent = item.name;
-//добавляем like
-    cloneCard.querySelector('.place__like').addEventListener('click', actionLike);
-//удалить карточку
-    cloneCard.querySelector('.place__trash').addEventListener('click', deleteCard);
-//открыть Full изоражение
-    cardImage.addEventListener('click', openFullImg);
-    return cloneCard;
-};
-
-// Формируем массив карт
-function addCards(cards) {
-    return cards.map((item) => createCard(item));
-  }
-// берем массив для отображения на странице
-  function publicCards(cards) {
-    placesList.prepend(...cards);
-  }
-
-  //функция отображения ошибок при открытии формы
-function checkInputOpenedForm(inputList, formElement){
-    inputList.forEach((formInput) => {
-        hideInputError(formElement, formInput, obj);
-    });
-};
-
   //переключение класса скрытия/открытия попап
-  function popupToggle(popItem) {
+ export function popupToggle(popItem) {
       if((popItem.classList.contains('popup__container_edit')) && (!popItem.classList.contains('popup_opened'))){
         openPopupEdit();
         checkInputOpenedForm(inputsEditForm, save);
@@ -173,8 +119,10 @@ function formSubmitEditHandler (evt) {
 //отправка формы Add
 function formSubmitAddHandler (evt){
     evt.preventDefault(); 
-    const newCard = createCard({name: titleValue.value, link: urlValue.value});
-    publicCards([newCard]); // добавляем карточку в разметку
+    const newCard = new Card({name: titleValue.value, link: urlValue.value}, '#image');
+    const userCard = newCard.generateCard();
+    // добавляем карточку в разметку
+    placesList.prepend(userCard);
     popupToggle(popupAdd);
     toggleButtonState(inputsAddForm, submitAdd, obj);
 }
@@ -195,4 +143,9 @@ save.addEventListener('submit', formSubmitEditHandler);
 create.addEventListener('submit', formSubmitAddHandler);
 
 //добавляем карточки при загрузке
-publicCards(addCards(initialCards));
+initialCards.forEach((item) => {
+    const card = new Card(item, '#image');
+    const  cardElement = card.generateCard();
+    placesList.prepend(cardElement);
+})
+
