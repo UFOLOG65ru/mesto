@@ -13,7 +13,7 @@ export class FormValidator {
     }
   
     // публичный метод скрытия ошибок валидации
-    _hideInputError(formElement, formInput, settingsObject) {
+    hideInputError(formElement, formInput, settingsObject) {
       const formError = formElement.querySelector(`#${formInput.id}-error`);
       formInput.classList.remove(settingsObject.inputErrorClass);
       formError.classList.remove(settingsObject.errorClass);
@@ -26,7 +26,7 @@ export class FormValidator {
       if (!formInput.validity.valid) {
         this._showInputError(formElement, formInput, formInput.validationMessage, settingsObject);
       } else {
-        this._hideInputError(formElement ,formInput, settingsObject);
+        this.hideInputError(formElement ,formInput, settingsObject);
       }
     }
   
@@ -61,7 +61,6 @@ export class FormValidator {
       const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector);
       // Проверяем состояние кнопки при первой загрузке страницы
       this._toggleButtonState(inputList, buttonElement, settingsObject);
-      // toggleButtonState(inputList, formElement);
       // Обойдем все элементы полученной коллекции
       inputList.forEach((formInput) => {
       // каждому полю добавим обработчик события input
