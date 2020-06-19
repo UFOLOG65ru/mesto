@@ -121,7 +121,7 @@ function toggleEvent (popupElement){
   function openPopuAdd(){
     titleValue.value = '';
     urlValue.value = '';
-    
+
     // проводим валидацию полей ввода формы "создания карточки"
     checkInputOpenedForm(inputsAddForm, submitAdd, formAddValid);
     popupToggle(popupAdd);
@@ -142,7 +142,9 @@ function formSubmitAddHandler (evt){
     const userCard = newCard.generateCard();
     // добавляем карточку в разметку
     placesList.prepend(userCard);
+    submitAdd.reset();
     saveButtonAdd.classList.add(settingsObject.inactiveButtonClass);
+    saveButtonAdd.disabled = true;
     popupToggle(popupAdd);
 }
 
