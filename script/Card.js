@@ -42,9 +42,9 @@ export class Card {
   // приватный метод удаления карточки
   _deleteCard() {
     this._element.querySelector('.place__trash').closest('.place').remove();
-    this._element.querySelector('.place__like').removeEventListener('click', actionLike);
-    this._element.querySelector('.place__trash').removeEventListener('click', deleteCard);
-    this._element.querySelector('.place__photo').removeEventListener('click', openFullImg);
+    this._element.querySelector('.place__like').removeEventListener('click', this.actionLike);
+    this._element.querySelector('.place__trash').removeEventListener('click', this.deleteCard);
+    this._element.querySelector('.place__photo').removeEventListener('click', this.openFullImg);
   }
 
   // приватный метод открытия попапа с большым изображением

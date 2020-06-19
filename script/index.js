@@ -121,6 +121,7 @@ function toggleEvent (popupElement){
   function openPopuAdd(){
     titleValue.value = '';
     urlValue.value = '';
+    
     // проводим валидацию полей ввода формы "создания карточки"
     checkInputOpenedForm(inputsAddForm, submitAdd, formAddValid);
     popupToggle(popupAdd);

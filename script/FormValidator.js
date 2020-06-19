@@ -48,9 +48,12 @@ export class FormValidator {
       if (this._hasInvalidInput(inputList)) {
       // делаем кнопку неактивной
       buttonElement.classList.add(settingsObject.inactiveButtonClass);
-      } else {
+      buttonElement.disabled = true; 
+      } 
+      else {
       // иначе делаем кнопку активной
       buttonElement.classList.remove(settingsObject.inactiveButtonClass);
+      buttonElement.disabled = false; 
       }
     }
   
