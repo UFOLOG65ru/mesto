@@ -8,7 +8,7 @@ const saveButtonEdit = document.querySelector('.popup__submit_edit');
 const saveButtonAdd = document.querySelector('.popup__submit_add');
 const buttonAdd = document.querySelector('.profile__add'); //кнопка добавления карточки
 const popupEdit = document.querySelector('.popup_edit'); //попап редакттирования профиля
-const popupAdd =document.querySelector('.popup_add'); //поппап добавления карточки
+const popupAdd = document.querySelector('.popup_add'); //поппап добавления карточки
 export const popupImg = document.querySelector('.popup_image'); //попап отображения полного изображения
 const buttonCloseEdit = document.querySelector('.popup__close_edit-window');//кнопка закрытия попапа редакирования
 const buttonCloseAdd = document.querySelector('.popup__close_add-window');//кнопка закрытия попапа добавления
@@ -18,12 +18,12 @@ const nameValue = document.querySelector('.profile__name'); // отображе�
 const jobValue = document.querySelector('.profile__job'); //отображение профессии в профиле
 const titleValue = document.querySelector('.popup__input_title'); //значение поля Название
 const urlValue = document.querySelector('.popup__input_url'); //значение поля Ссылка на картинку
-const popupName =document.querySelector('.popup__input_name'); //значение поля Введите имя
+const popupName = document.querySelector('.popup__input_name'); //значение поля Введите имя
 const popupJob = document.querySelector('.popup__input_job'); //значение поля Введите род деятельности
 const submitEdit = document.querySelector('.popup__container_edit'); // отправка формы редактирования
-const submitAdd =document.querySelector('.popup__container_add'); // отправка формы добавления
+const submitAdd = document.querySelector('.popup__container_add'); // отправка формы добавления
 export const popupFigcaption = document.querySelector('.popup__figcaption'); //подпись полного изображения
-const inputsEditForm  = Array.from(submitEdit.querySelectorAll('.popup__input'));
+const inputsEditForm = Array.from(submitEdit.querySelectorAll('.popup__input'));
 const inputsAddForm = Array.from(submitAdd.querySelectorAll('.popup__input'));
 //исходный массив
 const initialCards = [
@@ -59,9 +59,9 @@ export const settingsObject = {
     inactiveButtonClass: 'popup__submit_inactive',
     inputErrorClass: 'popup__input_error',
     errorClass: 'popup__input-error'
-    };
-    
-    // Для каждой проверяемой формы создаем экземпляр класса
+};
+
+// Для каждой проверяемой формы создаем экземпляр класса
 // и вызываем метод enableValidation
 const formEditValid = new FormValidator(settingsObject, submitEdit);
 formEditValid.enableValidation();
@@ -69,66 +69,66 @@ const formAddValid = new FormValidator(settingsObject, submitAdd);
 formAddValid.enableValidation();
 
 // Функция скрытия ошибок валидации при открытии формы
-function checkInputOpenedForm (inputList, formElement, formValid) {
+function checkInputOpenedForm(inputList, formElement, formValid) {
     inputList.forEach((inputElement) => {
         formValid.hideInputError(formElement, inputElement, settingsObject);
     });
-  }
+}
 
-  //переключение класса скрытия/открытия попап
- export function popupToggle(popupElement) {
-      toggleEvent(popupElement);
+//переключение класса скрытия/открытия попап
+export function popupToggle(popupElement) {
+    toggleEvent(popupElement);
     // переключаем классы
     popupElement.classList.toggle('popup_opened');
-  }
+}
 
 //функция находит какая именно форма сейчас открыта
-function openedForm(evt){
+function openedForm(evt) {
     const openedFormElement = document.querySelector('.popup_opened');
     closeEsc(evt, openedFormElement);
 
 }
-  //функция закрытия попап через ESC
-  function closeEsc (evt, formElement){
+//функция закрытия попап через ESC
+function closeEsc(evt, formElement) {
     if ((evt.target.classList.contains('popup')) || (evt.key === 'Escape')) {
         popupToggle(formElement);
-      }
+    }
 }
 //функция смены состояния слушателей ESC и оверлей
-function toggleEvent (popupElement){
-    if(!popupElement.classList.contains('popup_opened')){
+function toggleEvent(popupElement) {
+    if (!popupElement.classList.contains('popup_opened')) {
         //ставим слушатели закрытия кликом или клавишей
-         document.addEventListener('click', openedForm);
-         document.addEventListener('keydown', openedForm)
+        document.addEventListener('click', openedForm);
+        document.addEventListener('keydown', openedForm)
     }
-    else{
+    else {
         //снмаем слушатели
         document.removeEventListener('click', openedForm);
-         document.removeEventListener('keydown', openedForm)
+        document.removeEventListener('keydown', openedForm)
     }
-   
+
 }
 //функция открытия и наполнения информацией формы профиля
-  function openPopupEdit(){
+function openPopupEdit() {
     popupName.value = nameValue.textContent;
     popupJob.value = jobValue.textContent;
     checkInputOpenedForm(inputsEditForm, submitEdit, formEditValid);
     // делаем кнопку активной при открытии
     saveButtonEdit.classList.remove(settingsObject.inactiveButtonClass);
     popupToggle(popupEdit);
-  }
+}
 //функция открытия попапа формы добавления карточки со сбросом нформации полей
-  function openPopuAdd(){
+function openPopuAdd() {
     titleValue.value = '';
     urlValue.value = '';
 
     // проводим валидацию полей ввода формы "создания карточки"
     checkInputOpenedForm(inputsAddForm, submitAdd, formAddValid);
     popupToggle(popupAdd);
-  }
+}
 
 //отправка формы Edit
-function formSubmitEditHandler (evt) {
+function formSubmitEditHandler(evt) {
     evt.preventDefault();
     nameValue.textContent = popupName.value;
     jobValue.textContent = popupJob.value;
@@ -136,9 +136,9 @@ function formSubmitEditHandler (evt) {
 }
 
 //отправка формы Add
-function formSubmitAddHandler (evt){
-    evt.preventDefault(); 
-    const newCard = new Card({name: titleValue.value, link: urlValue.value}, '#image');
+function formSubmitAddHandler(evt) {
+    evt.preventDefault();
+    const newCard = new Card({ name: titleValue.value, link: urlValue.value }, '#image');
     const userCard = newCard.generateCard();
     // добавляем карточку в разметку
     placesList.prepend(userCard);
@@ -166,7 +166,7 @@ submitAdd.addEventListener('submit', formSubmitAddHandler);
 //добавляем карточки при загрузке
 initialCards.forEach((item) => {
     const card = new Card(item, '#image');
-    const  cardElement = card.generateCard();
+    const cardElement = card.generateCard();
     placesList.prepend(cardElement);
 })
 
