@@ -17,7 +17,7 @@ export class Card {
         return cardElement;
     }
 
-    // приватный метод переключения лайка
+    // приватный метод !переключения лайка
     _actionLike() {
         this._element.querySelector('.place__like').classList.toggle('place__like_active');
     }
@@ -41,11 +41,11 @@ export class Card {
     // установка слушателей 
     _setEventListeners() {
         // настройка переключения лайка 
-        this._element.querySelector('.place__like').addEventListener('click', () => { this._actionLike() });
+        this._element.querySelector('.place__like').addEventListener('click',  this._actionLike );
         // настройка удаления карточки 
-        this._element.querySelector('.place__trash').addEventListener('click', () => { this._deleteCard() });
+        this._element.querySelector('.place__trash').addEventListener('click', this._deleteCard);
         // настройка открытия попапа с полным изображением 
-        this._element.querySelector('.place__photo').addEventListener('click', () => { this._openFullImg() });
+        this._element.querySelector('.place__photo').addEventListener('click', this._openFullImg);
     }
 
     // публичный метод заполнения карточки данными
