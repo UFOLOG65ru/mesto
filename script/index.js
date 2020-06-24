@@ -1,8 +1,8 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { Section } from './Section.js';
 
-
-const placesList = document.querySelector('.places-list');// контейнер для размещения карточек 
+const placesList = '.places-list';// контейнер для размещения карточек 
 const buttonEdit = document.querySelector('.profile__edit'); //кнопка редактирования профиля
 const saveButtonEdit = document.querySelector('.popup__submit_edit');
 const saveButtonAdd = document.querySelector('.popup__submit_add');
@@ -138,10 +138,19 @@ function formSubmitEditHandler(evt) {
 //отправка формы Add
 function formSubmitAddHandler(evt) {
     evt.preventDefault();
-    const newCard = new Card({ name: titleValue.value, link: urlValue.value }, '#image');
-    const userCard = newCard.generateCard();
-    // добавляем карточку в разметку
-    placesList.prepend(userCard);
+    
+    const newsCard = new Section({
+        items: [{ name: titleValue.value, link: urlValue.value }],
+        renderer: (item) => {
+          const card = new Card(item, '#image');
+          const cardElement = card.generateCard();
+          newsCard.setItem(cardElement);
+          },
+        },
+        placesList
+      );
+      // отображение карточек
+      newsCard.renderItems();
     submitAdd.reset();
     saveButtonAdd.classList.add(settingsObject.inactiveButtonClass);
     saveButtonAdd.disabled = true;
@@ -164,9 +173,16 @@ submitEdit.addEventListener('submit', formSubmitEditHandler);
 submitAdd.addEventListener('submit', formSubmitAddHandler);
 
 //добавляем карточки при загрузке
-initialCards.forEach((item) => {
-    const card = new Card(item, '#image');
-    const cardElement = card.generateCard();
-    placesList.prepend(cardElement);
-})
-
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, '#image');
+      const cardElement = card.generateCard();
+      cardsList.setItem(cardElement);
+      },
+    },
+    placesList
+  );
+  
+  // отображение карточек
+  cardsList.renderItems();
