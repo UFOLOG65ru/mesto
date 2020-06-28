@@ -1,4 +1,5 @@
-import { popupImg, popupFigcaption, imgSrc, popupToggle } from './index.js'
+import { popupImg, popupFigcaption, imgSrc } from './index.js'
+import { Popup } from './Popup.js';
 
 export class Card {
     constructor(data, cardSelector) {
@@ -33,10 +34,11 @@ export class Card {
     // приватный метод открытия попапа с полным изображением
     _openFullImg() {
         const cardImageElement = this._element.querySelector('.place__photo');
-        imgSrc.src = cardImageElement.src;
+       /*  imgSrc.src = cardImageElement.src;
         imgSrc.alt = cardImageElement.alt;
-        popupFigcaption.textContent = cardImageElement.alt;
-        popupToggle(popupImg);
+        popupFigcaption.textContent = cardImageElement.alt; */
+        //popupToggle(popupImg);
+        popupImg.openPop(cardImageElement);
     }
     // установка слушателей 
     _setEventListeners() {
