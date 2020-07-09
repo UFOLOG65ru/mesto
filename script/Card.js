@@ -1,6 +1,7 @@
-import { popupImg, popupFigcaption, imgSrc, popupToggle } from './index.js'
+import { popupImg, popupFigcaption, imgSrc } from '../utils/constants.js';
+import { popupToggle } from '../pages/index.js';
 
-export class Card {
+export default class Card {
     constructor(data, cardSelector) {
         this._link = data.link;
         this._name = data.name;
